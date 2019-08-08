@@ -68,3 +68,69 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 Will's front end
+//////////////
+REDUX TEMPLATE
+//////////////
+
+import { createStore } from 'redux'
+
+//REDUCER is called once initially to set up default state
+const defaultState = {
+  user: "",
+  likes: 0,
+  on: false,
+  text: "",
+  list: []
+}
+function reducer(prevState=defaultState, action){
+  switch(action.type){
+    case "LIKE":
+      return {...prevState, likes: prevState.likes + 1}
+    case "DISLIKE":
+      return {...prevState, likes: prevState.likes - 1}
+    case "TOGGLE":
+      return {...prevState, on: !prevState.on}
+    case "HANDLE_CHANGE":
+      return {...prevState, text: action.payload}
+    case "PRINT":
+      return {...prevState, list: [...prevState.list, prevState.text]}
+    default:
+      return prevState
+  }
+
+}
+
+const store = createStore(reducer)
+
+console.log("BEFORE", store.getState())
+
+store.dispatch({type: "LIKE"})//SET state
+store.dispatch({type: "LIKE"})//SET state
+
+store.dispatch({type: "DISLIKE"})
+store.dispatch({type: "TOGGLE"})
+store.dispatch({type: "HANDLE_CHANGE", payload: "I'm a piece of captured text !"})
+store.dispatch({type: "PRINT"})
+
+
+console.log("AFTER", store.getState())
+
+////////
+REDUX TEMPLATE end
+/////////
+
+Login Form:
+
+CHORTLE
+<form action="action_page.php">
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required />
+      <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required />
+      <button type="submit">Login</button>
+    </div>
+  <div class="container">
+    <span class="psw"><a href="#">Not a member? Sign up</a></span>
+  </div>
+</form>

@@ -1,26 +1,51 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar'
+import Login from './components/Login'
+import MainContainer from './containers/MainContainer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from 'react-redux'
+
+import Chore from './components/Chore'
+
+class App extends React.Component {
+
+
+  componentDidMount(){
+    fetch('http://localhost:3000/chores')
+    	.then(res=>res.json())
+    	.then(choreData=>console.log(choreData))
+  }
+
+
+
+  render(){
+
+    console.log("APP PROPS", this.props.user)
+
+    return (
+      <div className="App">
+        Chortle!
+      <NavBar />
+      {this.props.user ? <MainContainer /> : <Login />}
+      </div>
+    );
+  }
+
+}//end of app component
+
+function mapStateToProps(state){
+  return {
+    user: state.user
+  }
 }
 
-export default App;
+function mapDispatchToProps(dispatch){
+  return {
+
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
