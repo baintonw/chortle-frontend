@@ -1,40 +1,76 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
+import { usernameInput, passwordInput, login, signup } from '../actions'
 
 function Login(props){
-  console.log("Current User", props.user)
-  return <div className="ui form">
-      <div className="fields">
-        <div className="field">
-          <label>Username</label>
-          <input onChange={(e) => props.handleChange(e.target.value)} type="text" placeholder="Username" />
-        </div>
-      </div>
-      <div className="field">
-        <label>Password</label>
-        <input placeholder="Password" type="password" />
-        <button onClick={props.login} type="submit" value="Submit">Log In</button>
-      </div>
+  const getUser = (event, username, password) => {
+    event.preventDefault()
+    fetch('http://localhost:3000/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    })
+    .then(response => response.json())
+    .then(user => {
+      console.log("THE response", user)
+      props.login(user)
+    })
+  }
+
+  return(
+  <div>
+    <div className="ui form login">
+            <div className="fields">
+              <div className="field">
+                <label>Username</label>
+                  <input onChange={(e) => props.usernameInput(e.target.value)} type="text" placeholder="Username" />
+              </div>
+            </div>
+            <div className="field">
+              <label>Password</label>
+                <input onChange={(e) => props.passwordInput(e.target.value)}  type="password" />
+            </div>
+    </div>
+    <div>
+      <button className="ui button" onClick={(e) => getUser(e, props.username, props.password)} type="submit" value="Submit">Log In</button>
+      <button onClick={() => props.signup()} className="ui button">Sign Up</button>
+    </div>
   </div>
+)
 }
 
 function msp(state){
   return{
-    user: state.user,
-    userInput: state.userInput
+    username: state.username,
+    password: state.password,
+    text: state.text,
+    signupForm: state.signupForm
   }
 }
 
 function mdp(dispatch){
   return{
-    handleChange: (text) => {
-      return dispatch({type: "USER_INPUT", payload: text})
+    usernameInput: (text) => {
+      return dispatch(usernameInput(text))
+      //this function mirrors the format of what's called in the onClick
     },
-    login: () => {
-      return dispatch({type: "LOGIN"})
+    passwordInput: (text) => {
+      return dispatch(passwordInput(text))
+    },
+    login: (user) => {
+      return dispatch(login(user))
+    },
+    signup: () => {
+      return dispatch(signup())
     }
   }
 }
-
+//currently i'm loggin in the username not the whole user object
 export default connect(msp, mdp)(Login);

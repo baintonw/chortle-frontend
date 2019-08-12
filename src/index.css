@@ -21,3 +21,50 @@ code {
   position: absolute;
   right: 0px;
 }
+
+.login {
+  position: fixed;
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.main {
+  margin-top: 100px;
+
+  border: 1px dotted red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.chore {
+
+
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.tile {
+  border: 2px solid purple;
+  padding: 16px;
+  margin: 16px;
+
+
+}
+
+.user {
+  border: 1px dotted teal;
+  padding: 20px;
+  margin: 200px;
+
+}
+
+.username:hover {
+  color: blue;
+}

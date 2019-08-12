@@ -1,17 +1,50 @@
 const defaultState = {
   user: null,
-  userInput: ""
+  username: null,
+  password: null,
+  signupForm: false,
+  userPage: false,
+  addForm: false,
+  chores: [],
+  roommates: [],
+  userChores: [],
+  likes: 0
 }
 
 function reducer(prevState=defaultState, action){
   switch(action.type){
+    case "LIKE":
+      return {...prevState, likes: prevState.likes + 1}
+    case "DISLIKE":
+      return {...prevState, likes: prevState.likes - 1}
+    case "SET_CHORES":
+      return {...prevState, chores: action.payload}
+    case "UPDATE_CHORES":
+      return {
+        ...prevState,
+        chores: prevState.chores.filter(chore => {
+          return chore.id !== action.payload.id
+        })
+      }
     case "USER_INPUT":
-      return {...prevState, userInput: action.payload}
+      return {...prevState, username: action.payload}
+    case "PASSWORD_INPUT":
+      return {...prevState, password: action.payload}
     case "LOGIN":
-      return {...prevState, user: prevState.userInput}
+      return {...prevState, user: action.payload}
+    case "LOGOUT":
+      return {...prevState, user: null, userPage: false}
+    case "SIGN_UP":
+      return {...prevState, signupForm: !prevState.signupForm, }
+    case "USER_PAGE":
+      return {...prevState, userPage: !prevState.userPage}
+    case "UPDATE_USER_CHORES":
+      return {...prevState, userChores: [...prevState.userChores, action.payload]}
     default:
       return prevState
   }
+
+
 
 }
 
