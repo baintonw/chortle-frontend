@@ -52,20 +52,6 @@ function mdp(){
   return{}
 }
 
-//ADD A CHORE FETCH COMPLETE
 
-// fetch('http://localhost:3000/chores', {
-// 	method: "POST",
-// 	headers: {
-// 		"Content-Type": "application/json"
-// 	},
-// 	body: JSON.stringify({
-// 		name: "Test Chore",
-// 		room: "Basement",
-// 		duedate: null,
-// 		completed: false,
-// 		claimed: false
-// 	})
-// })
 
 export default connect(msp, mdp)(MainChoreContainer);

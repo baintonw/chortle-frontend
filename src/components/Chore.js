@@ -9,9 +9,13 @@ const Chore = (props) => {
     event.preventDefault()
     console.log('claimed!', props.chore.id)
     props.postClaim(props.user, props.chore)
+    //adds chore to user
     props.toggleClaimed(props.chore)
+    //changes claimed boolean on each chore
     props.updateChores(props.chore)
+    //removes chore from CHORES state
     props.updateUserChores(props.chore)
+
     console.log(props.userChores)
   }
 

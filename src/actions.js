@@ -21,10 +21,12 @@ function passwordInput(text){
 }
 
 function login(user){
+  localStorage.userId = user.id
   return {type: "LOGIN", payload: user}
 }
 
 function logout(){
+  localStorage.removeItem("userId")
   return {type: "LOGOUT"}
 }
 
@@ -34,6 +36,24 @@ function signup(){
 
 function userPage(){
   return {type: "USER_PAGE"}
+}
+
+function addForm(){
+  return {type: "ADD_FORM"}
+}
+
+function autoLogin(){
+  return function(dispatch){
+      fetch('http://localhost:3000/auto_login', {
+        method: "POST",
+        headers: {"Authorization": localStorage.userId}
+      })
+        .then(res=>res.json())
+        .then(user => {
+          dispatch({type: "AUTO_LOGIN", payload: user})
+        })
+
+  }
 }
 
 function postUser(username, password){
@@ -81,12 +101,40 @@ function toggleClaimed(chore){
   }
 }
 
+function postChore(chore){
+  return function(dispatch){
+    fetch('http://localhost:3000/chores', {
+    	method: "POST",
+    	headers: {
+    		"Content-Type": "application/json"
+    	},
+    	body: JSON.stringify({chore})
+    })
+  }
+}
+
+function addToChores(chore){
+  return {type: "ADD_TO_CHORES", payload: chore}
+}
+
+// name: "Test Chore",
+// room: "Basement",
+// duedate: null,
+// completed: false,
+// claimed: false
+
 function updateChores(chore){
   return {type: "UPDATE_CHORES", payload: chore}
 }
 
-function updateUserChores(userChores){
-  return {type: "UPDATE_USER_CHORES", payload: userChores}
+function updateUserChores(userId){
+  return function(dispatch){
+    fetch(`http://localhost:3000/users/${userId}`)
+      .then(res=>res.json())
+      .then(user => {
+        dispatch({type: "UPDATE_USER_CHORES", payload: user.chores})
+      })
+  }
 }
 
 
@@ -99,6 +147,8 @@ function thunkAction(argsFromComponent){
 
 
 
+
+
 export {
   like,
   dislike,
@@ -106,12 +156,16 @@ export {
   usernameInput,
   passwordInput,
   login,
+  autoLogin,
   logout,
   signup,
   postUser,
   postClaim,
+  postChore,
+  addToChores,
   toggleClaimed,
   updateChores,
   updateUserChores,
-  userPage
+  userPage,
+  addForm
 }

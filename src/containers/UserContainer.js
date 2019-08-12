@@ -7,7 +7,7 @@ import Chore from '../components/Chore'
 class UserContainer extends React.Component{
 
   renderUserChores = () => {
-    return this.props.userChores.map(chore => {
+    return this.props.userChores[0].map(chore => {
       return <Chore chore={chore} />
     })
   }

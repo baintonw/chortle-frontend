@@ -4,7 +4,7 @@ const defaultState = {
   password: null,
   signupForm: false,
   userPage: false,
-  addForm: false,
+  addFormPage: false,
   chores: [],
   roommates: [],
   userChores: [],
@@ -19,6 +19,8 @@ function reducer(prevState=defaultState, action){
       return {...prevState, likes: prevState.likes - 1}
     case "SET_CHORES":
       return {...prevState, chores: action.payload}
+    case "ADD_TO_CHORES":
+      return {...prevState, chores: [...prevState.chores, action.payload]}
     case "UPDATE_CHORES":
       return {
         ...prevState,
@@ -32,10 +34,15 @@ function reducer(prevState=defaultState, action){
       return {...prevState, password: action.payload}
     case "LOGIN":
       return {...prevState, user: action.payload}
+    case "AUTO_LOGIN":
+      console.log(action.payload)
+      return {...prevState, user: action.payload}
     case "LOGOUT":
-      return {...prevState, user: null, userPage: false}
+      return {...prevState, user: null, userPage: false, userChores: []}
     case "SIGN_UP":
       return {...prevState, signupForm: !prevState.signupForm, }
+    case "ADD_FORM":
+      return {...prevState, addFormPage: !prevState.addFormPage}
     case "USER_PAGE":
       return {...prevState, userPage: !prevState.userPage}
     case "UPDATE_USER_CHORES":
