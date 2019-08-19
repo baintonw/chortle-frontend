@@ -1,6 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+
+
 import './App.css';
+
+// import MyCalendar from './BigCalendar'
+
+
+
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import MainContainer from './containers/MainContainer'
@@ -12,6 +18,7 @@ import { connect } from 'react-redux'
 import { like, dislike, handleChange, autoLogin } from './actions'
 
 import Chore from './components/Chore'
+
 
 class App extends React.Component {
 
@@ -26,7 +33,7 @@ class App extends React.Component {
     if(this.props.user){
       return <MainContainer />
     } else if(this.props.signupForm){
-      return <SignupForm />
+        return <SignupForm />
     } else {
         return <Login />
     }
@@ -35,14 +42,18 @@ class App extends React.Component {
 
 
   render(){
-    return (
+    return(
+      <div>
       <div className="App">
         Chortle!
         <NavBar />
-
           {this.renderHome()}
       </div>
-    );
+      </div>
+
+    )
+
+
   }
 
 }//end of app component
@@ -54,6 +65,7 @@ function mapStateToProps(state){
     username: state.username,
     signupForm: state.signupForm,
     userPage: state.userPage,
+    roommateState: state.roommateState,
     addForm: state.addForm,
     likes: state.likes
   }

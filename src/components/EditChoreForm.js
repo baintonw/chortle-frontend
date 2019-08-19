@@ -6,9 +6,11 @@ import { DatePicker } from 'antd';
 
 import { connect } from 'react-redux'
 
-import { postChore, addToChores, updateChores, addForm } from '../actions'
+import { editChore } from '../actions'
 
-class AddChoreForm extends React.Component{
+
+class EditChoreForm extends React.Component{
+
   state = {
     title: "",
     room: "",
@@ -16,10 +18,18 @@ class AddChoreForm extends React.Component{
     description: ""
   }
 
+
   handleStateChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    }, () => {console.log(this.state.duedate)})
+  }
+
+  handleDueDate = (date, dateString) => {
+    console.log(date, dateString)
+    this.setState({
+      duedate: dateString
+    }, () => console.log(this.state.duedate))
   }
 
   handleClick = (event) => {
@@ -28,24 +38,14 @@ class AddChoreForm extends React.Component{
       title: this.state.title,
       room: this.state.room,
       duedate: this.state.duedate,
-      description: this.state.description
+      description: this.state.description,
+      id: this.props.editChoreView.id
     }
-
-    this.props.postChore(chore)
-    // this.props.updateChores(chore)
-    // this.props.addToChores(chore)
-    this.props.addForm()
-    //turns off addForm
-
-
+    this.props.editChore(chore)
   }
-  handleChange = (date, dateString) => {
-    console.log(date, dateString)
-    this.setState({
-      duedate: dateString
-    }, () => console.log("DUE DATE IN STATE", this.state.duedate))
-  }
+
   render(){
+    console.log(this.props.editChoreView)
     return(
       <div>
         <form className="ui form">
@@ -58,7 +58,7 @@ class AddChoreForm extends React.Component{
             <textarea onChange={(event) => this.handleStateChange(event)} type="text" name="description" placeholder="First Name" />
           </div>
           <div>
-            <DatePicker showTime onChange={this.handleChange} />
+            <DatePicker showTime onChange={this.handleDueDate} />
           </div>
           <div className="field">
           </div>
@@ -70,26 +70,17 @@ class AddChoreForm extends React.Component{
 }
 
 function msp(state){
-  return {
-    chores: state.chores
+  return{
+    editChoreView: state.editChoreView
   }
 }
 
 function mdp(dispatch){
-  return {
-    postChore: (chore) => {
-      dispatch(postChore(chore))
-    },
-    addToChores: (chore) => {
-      dispatch(addToChores(chore))
-    },
-    updateChores: (chore) => {
-      return dispatch(updateChores(chore))
-    },
-    addForm: () => {
-      return dispatch(addForm())
+  return{
+    editChore: (chore) => {
+      return dispatch(editChore(chore))
     }
   }
 }
 
-export default connect(msp, mdp)(AddChoreForm);
+export default connect(msp, mdp)(EditChoreForm);

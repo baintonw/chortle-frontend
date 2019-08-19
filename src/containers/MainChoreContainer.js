@@ -20,9 +20,9 @@ class MainChoreContainer extends React.Component{
   // }
 
   renderChores = () => {
-    return this.props.chores.map(chore => {
+    return this.props.available.map(chore => {
       if(chore.claimed !== true){
-          return <Chore rerender={this.rerender} chore={chore} />
+          return <Chore chore={chore} />
         }
       })
   }
@@ -43,7 +43,8 @@ class MainChoreContainer extends React.Component{
 function msp(state){
   return{
     user: state.user,
-    chores: state.chores
+    chores: state.chores,
+    available: state.available
   }
 
 }

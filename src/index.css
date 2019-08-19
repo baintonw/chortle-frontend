@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.calendar {
+  height: 400px;
+
+}
+
 .left {
   position: absolute;
   left: 0px;
@@ -33,11 +38,13 @@ code {
 
 .main {
   margin-top: 100px;
-
-  border: 1px dotted red;
+  height: 800px;
+  border: 1px dotted blue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .chore {
@@ -54,17 +61,23 @@ code {
   border: 2px solid purple;
   padding: 16px;
   margin: 16px;
-
-
 }
 
 .user {
   border: 1px dotted teal;
   padding: 20px;
-  margin: 200px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 
 }
 
 .username:hover {
+  color: blue;
+}
+
+.roommatename:hover {
   color: blue;
 }

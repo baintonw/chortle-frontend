@@ -2,7 +2,7 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { logout, userPage } from '../actions.js'
+import { home, logout, userPage } from '../actions.js'
 
 
 class NavBar extends React.Component{
@@ -20,10 +20,16 @@ class NavBar extends React.Component{
               <div className="username" onClick={() => this.props.userPage()}>
                 {this.props.user.username}
               </div>
+              <div onClick={this.props.home} className="ui animated button" tabIndex="0">
+                <div className="visible content">Home</div>
+                <div className="hidden content">
+                  OK!
+                </div>
+              </div>
                <div onClick={this.props.logout} className="ui animated button" tabIndex="0">
-                 <div className="visible content">Next</div>
+                 <div className="visible content">Logout</div>
                  <div className="hidden content">
-                   Log out
+                   Bye!
                  </div>
               </div>
             </div>
@@ -49,7 +55,10 @@ function mdp(dispatch){
       return dispatch(logout())
     },
     userPage: () => {
-      return dispatch(userPage(), console.log("hit", userPage()))
+      return dispatch(userPage())
+    },
+    home: () => {
+      return dispatch(home())
     }
   }
 }

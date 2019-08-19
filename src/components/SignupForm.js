@@ -22,7 +22,7 @@ class SignupForm extends React.Component{
     this.props.postUser(this.state.newUsername, this.state.newPassword)
       .then(data => {
         console.log("Logged in a new user!", data)
-        this.props.login(data.username)
+        this.props.login(data)
       })//not working
 
     this.setState({

@@ -19,8 +19,12 @@ function Login(props){
     })
     .then(response => response.json())
     .then(user => {
-      console.log("THE response", user)
-      props.login(user)
+      if(user.message){
+        alert(user.message)
+      } else {
+        console.log("THE response", user)
+        props.login(user)
+      }
     })
   }
 
