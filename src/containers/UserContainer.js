@@ -3,14 +3,53 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Chore from '../components/Chore'
+import Star from '../components/Star'
+import Empty from '../components/Empty'
 
 class UserContainer extends React.Component{
 
   state = {
     user: "",
-    localChores: []
+    localChores: [],
+    edit: false,
+    description: ""
   }
 
+  editDescription = () => {
+    console.log("Description")
+    this.setState({
+      edit: !this.state.edit
+    }, () => {console.log(this.state.edit)})
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      description: event.target.value
+    }, ()=> {console.log(this.state.description)})
+  }
+
+  submitDescription = (event) => {
+    console.log("description in state", this.state.description)
+    fetch(`http://localhost:3000/users/${this.props.user.id}/edit`,{
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify({
+                description: this.state.description
+              })
+            })
+            .then(res=>res.json())
+            .then(updatedUser =>{
+              console.log(updatedUser)
+              this.setState({
+                user: updatedUser,
+                edit: false
+              })
+            }
+            )
+  }
   componentDidMount(user){
     fetch(`http://localhost:3000/users/${this.props.user.id}`)
       .then(res=>res.json())
@@ -20,6 +59,7 @@ class UserContainer extends React.Component{
             localChores: userObj.chores
           }, () => console.log("The eagle has landed!", this.state.user, this.state.user.chores)
         ))
+
   }
 
 
@@ -32,27 +72,61 @@ class UserContainer extends React.Component{
   //   })
   // }
   renderUserChores = () => {
-    return this.props.userChores.map(chore => {
-      return <Chore chore={chore} />
-    })
+        return this.props.userChores.map(chore => {
+          return <Chore chore={chore} />
+        })
+
   }
 
   completeUserChore = (chore) => {
     console.log("completed!")
   }
   //Render user.chores when I have the user object set in state
+  completed = () => {
+    console.log(this.props.userChores)
+    const completedChores = this.props.userChores.filter(chore => {
+      return chore.completed
+    })
+    return completedChores.length
+  }
 
+  noChores = () => {
+    if(this.props.userChores.length === 0){
+      return true
+    }
+  }
+  renderContainer = () => {
+    return(
+      <div className="ui raised segment user-chores primary">
+        <div className="ui three column grid" >
+          {this.state.user ? this.renderUserChores() : null}
+        </div>
+      </div>
+    )
+  }
   render(){
 
-    console.log("ALL CHORES", this.props.chores)
-    console.log("USER CHORES", this.props.userChores)
-    console.log("AVAILABLE", this.props.available)
-    console.log("user", this.state.user)
     return(
-      <div className="ui container user">
-        <h2>This is the user user container</h2>
-          {this.state.user ? this.renderUserChores() : null}
+    <div className="userpage">
+        <div className="ui raised segment about-me primary">
+          <h1>My page</h1>
+                <div className="star">{this.completed()}<i class="star outline icon"></i></div>
+            <h3>About:</h3>
+              <p>{this.state.user.description}</p>
+              {this.state.edit
+                ?
+                <div>
+                  <textarea autofocus="true" onChange={this.handleChange}></textarea>
+                  <div>
+                    <button className="ui button primary" onClick={(event) => this.submitDescription(event)}>Submit</button>
+                  </div>
+                </div>
+                :
+                <button onClick={this.editDescription}>Edit description</button>}
+        </div>
+          {this.noChores() ? <Empty /> : this.renderContainer()}
       </div>
+
     )
   }
 }

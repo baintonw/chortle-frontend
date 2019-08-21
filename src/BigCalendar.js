@@ -58,17 +58,19 @@ class MyCalendar extends React.Component{
 
 
   render(){
-    console.log("ALL THE CHORES ON CALENDAR", this.props.chores)
+    console.log("ALL THE CHORES ON CALENDAR", this.state.events)
     return(
-      <div className="calendar">
-      <Calendar
-      localizer={localizer}
-      events={this.state.events}
-      onDoubleClickEvent={(event) => this.props.handleClick(event)}
-      startAccessor="start"
-      endAccessor="end"
-      />
-      </div>
+        <div className="ui segment calendar">
+          <Calendar
+            popup="true"
+            localizer={localizer}
+            events={this.state.events}
+            onDoubleClickEvent={(event) => this.props.handleClick(event)}
+            startAccessor="start"
+            endAccessor="end"
+          />
+        </div>
+      
 
     )
   }

@@ -24,11 +24,17 @@ class RoommatesContainer extends React.Component{
     })
   }
 
+
   render(){
     return(
-      <div className="ui container">
-        <h3>I am your go-to Roommates container</h3>
-          {this.renderRoommates()}
+      <div id="roommates">
+      <div className="ui raised segment primary">
+        <div className="ui one column grid">
+          <div className="column">
+            {this.renderRoommates()}
+          </div>
+        </div>
+      </div>
       </div>
     )
   }

@@ -124,6 +124,7 @@ function postUser(username, password){
 }
 
 function postClaim(user, chore){
+  console.log("%cthe CH in postCLAIM", "color:blue; font-size: 30px", chore)
   return function(dispatch){
     return fetch('http://localhost:3000/claims',{
             method: "POST",

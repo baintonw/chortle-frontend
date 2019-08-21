@@ -48,7 +48,7 @@ class AddChoreForm extends React.Component{
   render(){
     return(
       <div>
-        <form className="ui form">
+        <form className="ui form add-form">
           <div className="field">
             <label>Chore Name</label>
             <input onChange={(event) => this.handleStateChange(event)} type="text" name="title" placeholder="First Name" />

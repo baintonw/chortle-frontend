@@ -12,27 +12,19 @@ class Roommate extends React.Component{
   render(){
     return(
       <div>
-       <div className="ui card">
-        <div className="image">
-          <img src="/images/avatar2/large/matthew.png" />
-        </div>
+       <div id="roommate" onClick={this.handleClick} className="ui card">
         <div className="content">
-          <div onClick={this.handleClick} className="roommatename">{this.props.roommate.username}</div>
-          <div className="meta">
-            <a>Friends</a>
+        <div id="roommate-icon">Logo</div>
+          <div className="roomate-icon">
+          <i class="user icon"></i>
           </div>
+        <div className="roommatename">{this.props.roommate.username}</div>
           <div className="description">
-            Matthew is an interior designer living in New York.
+            {this.props.roommate.description}
           </div>
         </div>
         <div className="extra content">
-          <span className="right floated">
-            Joined in 2013
-          </span>
-          <span>
-            <i className="user icon"></i>
-            75 Friends
-          </span>
+          <a>Chores:</a>{this.props.roommate.chores.length}
         </div>
       </div>
     </div>

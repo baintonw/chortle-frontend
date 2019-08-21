@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EBEBEB !important;
+
 }
 
 code {
@@ -12,8 +14,14 @@ code {
     monospace;
 }
 
+
+
+.input {
+  vertical-align:middle;
+}
+
 .calendar {
-  height: 400px;
+  height: 700px;
 
 }
 
@@ -25,59 +33,359 @@ code {
 .right {
   position: absolute;
   right: 0px;
+  bottom: 20px;
 }
 
 .login {
   position: fixed;
   margin: auto;
-  width: 50%;
+
+  width: 40%;
   display: flex;
   justify-content: center;
 
 }
 
+.login-btn {
+  position: absolute;
+  left: 45.7%;
+}
+
+.signup-btn {
+  position: absolute;
+  left:50%;
+}
+.big {
+  height: 100%;
+}
+
 .main {
+  position: relative;
+  display: flex;
+  /* border: 3px solid red; */
+  top: 150px;
+  width: 100%;
+  /* position: relative;
   margin-top: 100px;
   height: 800px;
+  left: 0px;
   border: 1px dotted blue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px;
+  width: 100px;
+  padding: 20px; */
+}
+
+
+
+.chore-view {
+   background-color: lightblue
+}
+
+.add-btn {
+  position: absolute;
+  bottom:2px;
+  left: 0px;
+  border: 1px solid black !important;
+
+}
+
+.calendar-btn {
+  position: absolute;
+  bottom: 2px;
+  left: 130px;
+  border: 1px solid black !important;
+}
+
+/* .tile {
+  border: 2px solid purple;
+  padding-top: 16px;
+  margin: 16px;
+
+} */
+#home{
+  position: absolute;
+  bottom: -15px;
+  right:99%;
+  border: 1px solid black !important;
+
+}
+
+#logout{
+  position:aboslute;
+  bottom:-15px;
+  right: 0px;
+  border: 1px solid black !important;
+  
+}
+.chores {
+  position: absolute;
+  overflow: auto;
+  top: 3px;
+  left: -380px;
+  width: 130%;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: 4px solid grey;
+  box-shadow: 0 0 08px black;
+  height: 800px;
+
+}
+
+.available {
+  position: absolute;
+  padding: 10px;
+  top: 60px;
+  left:10px;
+}
+
+.apt-name {
+  bottom: 0%;
+  margin-left: 45%;
+  font-size: 40px;
 }
 
 .chore {
-
-
   border: 1px solid blue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  top: 70px;
+  margin: 5px;
 }
 
-.tile {
-  border: 2px solid purple;
-  padding: 16px;
-  margin: 16px;
+
+
+#chore {
+  background-color: #F8F7E0;
 }
 
-.user {
-  border: 1px dotted teal;
-  padding: 20px;
+#chore-details {
+  background-color: #F8F7E0;
+
+}
+
+/* .chore:hover {
+  width: 300px;
+} */
+
+.signup {
+  top: 5px;
+}
+#signup-title {
+  position:relative;
+  left: 17px;
+}
+#signup-name {
+  position: absolute;
+  left: 10px;
+}
+
+#signup-pass {
+  position: absolute;
+  left: 190px
+}
+
+#signup-submit {
+  position: absolute;
+  left: 17px;
+  top: 120px;
+}
+
+#back {
+  position: absolute;
+  left: 107px;
+  top: 120px;
+}
+
+
+
+#roommates {
+  position: absolute;
+
+  right: -30px;
+  top: 125px;
 
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  padding: 10px;
 
 }
 
-.username:hover {
+#roommate {
+
+  margin-bottom: 20px;
+  background-color: #F8F7E0;
+
+}
+
+#roommate-icon {
+  position: absolute;
+  top:0px;
+  right:0px;
+}
+
+.userpage {
+  padding-top: 10px;
+
+
+
+
+}
+
+
+.star-container{
+  right:0px
+}
+.star {
+  transition-duration: 500ms;
+
+}
+.star:hover {
+  animation: spin .2s;
+}
+
+
+.completed-msg {
+  position: relative;
+  top: 100px;
+  right: 20px;
+}
+.about-me {
+  width: 27%;
+  text-align:left;
+}
+.user-chores {
+  position:absolute;
+  height: 600px;
+
+}
+
+/* .roommate-chores {
+  position:absolute;
+  height: 600px;
+} */
+.navbar {
+  height: 120px;
+}
+.nav-btns {
+  left:0px;
+  top: 10px;
+}
+.add-form {
+  top: 10px;
+}
+#username {
+  color:black;
+  bottom:60px;
+  right:0px;
+  font-size: 30px;
+  opacity: .8;
+}
+#username:hover {
   color: blue;
+  opacity: 1;
 }
 
 .roommatename:hover {
   color: blue;
+}
+
+.red {
+  background-color: #F55A5A;
+}
+
+.blue {
+  background-color: #2D9CDB;
+}
+
+.yellow {
+  background-color: #FDFFA6;
+}
+
+.green {
+  background-color: #00E74E;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  animation: pulse .8s;
+}
+
+.completed {
+  right:30px;
+}
+
+#finished {
+  text-decoration: line-through;
+}
+
+.news {
+  max-width: 60%;
+  background-color: lightgrey;
+  padding: 0.5rem 1rem 70px 1rem;
+  border: 2px solid black;
+  font-size: 30px;
+  animation: spin-in 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1;
+
+  word-wrap: break-word;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news:hover {
+  transform: scale(1.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.footer {
+  position: fixed !important;
+  width: 100vw !important;
+  bottom: 0px;
+  left: 0;
+
+}
+
+.primary {
+  background-color: #DAE2E4 !important;
+}
+
+#copyright {
+  position:absolute;
+  top: 5px;
+  right:5px;
+}
+
+#year {
+  position: absolute;
+  top: 8px;
+  right: 5px;
+}
+
+@keyframes spin-in {
+  from {
+    transform: scale(3) rotate(2000deg);
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.rbc-calendar{
+  height: 94% !important;
 }

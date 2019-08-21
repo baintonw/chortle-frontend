@@ -2,43 +2,52 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { home, logout, userPage } from '../actions.js'
+import { home, logout, userPage, addForm, showCalendar } from '../actions.js'
 
 
 class NavBar extends React.Component{
-  // const user = JSON.parse(this.props.user)
   render(){
     return(
-      <div className="ui header">
+      <div className="ui raised segment navbar primary">
         <div className="left">
-          Left!
+          Chortle!
         </div>
-        <div className="right">
+        <div>
           {this.props.user
              ?
              <div>
-              <div className="username" onClick={() => this.props.userPage()}>
+
+               <div className="nav-btns">
+                 <button onClick={() => this.props.addForm()} className="ui button add-btn">Add A Chore!</button>
+                 <button onClick={() => {this.props.showCalendar()}} className="ui button calendar-btn">The Docket</button>
+               </div>
+               <div className="apt-name">
+                  Jerry's Apartment
+               </div>
+              <div className="right">
+              <div id="username" onClick={() => this.props.userPage()}>
                 {this.props.user.username}
               </div>
-              <div onClick={this.props.home} className="ui animated button" tabIndex="0">
+              <div onClick={this.props.home} id="home" className="ui animated button" tabIndex="0">
                 <div className="visible content">Home</div>
                 <div className="hidden content">
                   OK!
                 </div>
               </div>
-               <div onClick={this.props.logout} className="ui animated button" tabIndex="0">
+               <div onClick={this.props.logout} id="logout" className="ui animated button" tabIndex="0">
                  <div className="visible content">Logout</div>
                  <div className="hidden content">
                    Bye!
                  </div>
               </div>
+              </div>
             </div>
              :
             null}
-        </div>
-        <div className="middle">
-        </div>
-    </div>
+          </div>
+
+      </div>
+
     )
   }
 }
@@ -59,6 +68,12 @@ function mdp(dispatch){
     },
     home: () => {
       return dispatch(home())
+    },
+    showCalendar: () => {
+      return dispatch(showCalendar())
+    },
+    addForm: () => {
+      return dispatch(addForm())
     }
   }
 }

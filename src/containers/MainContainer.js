@@ -14,6 +14,9 @@ import RoommatePage from '../components/RoommatePage'
 import ChoreView from '../components/ChoreView'
 import EditChoreForm from '../components/EditChoreForm'
 
+import Empty from '../components/Empty'
+import Footer from '../components/Footer'
+
 
 
 import { connect } from 'react-redux'
@@ -53,8 +56,8 @@ mainRender = () => {
   } else {
     return (
       <div>
-        <MainChoreContainer />
-        <RoommatesContainer />
+          <MainChoreContainer />
+          <RoommatesContainer />
       </div>
     )
   }
@@ -66,11 +69,15 @@ mainRender = () => {
   render(){
     console.log("This is the old chore view action", this.props.showChoreView)
     return(
-      <div className="ui container main">
-        <h3>I am your favorite Main Container</h3>
-          <button onClick={() => this.props.addForm()} className="ui button">{this.props.addFormPage ? "Back" : "Add A Chore!"}</button>
-          <button onClick={() => {this.props.showCalendar()}} className="ui button">The Docket</button>
+      <div>
+        <div className="ui container">
+          <div>
             {this.mainRender()}
+          </div>
+        </div>
+        <div className="ui raised segment footer primary">
+          <Footer />
+        </div>
       </div>
     )
   }

@@ -44,10 +44,11 @@ class App extends React.Component {
   render(){
     return(
       <div>
-      <div className="App">
-        Chortle!
+      <div className="app">
         <NavBar />
+        <div>
           {this.renderHome()}
+        </div>
       </div>
       </div>
 

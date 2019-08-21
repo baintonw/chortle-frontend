@@ -12,10 +12,10 @@ import { editChore } from '../actions'
 class EditChoreForm extends React.Component{
 
   state = {
-    title: "",
+    title: this.props.editChoreView.title,
     room: "",
-    duedate: "",
-    description: ""
+    duedate: this.props.editChoreView.duedate,
+    description: this.props.editChoreView.description
   }
 
 
@@ -51,11 +51,11 @@ class EditChoreForm extends React.Component{
         <form className="ui form">
           <div className="field">
             <label>Chore Name</label>
-            <input onChange={(event) => this.handleStateChange(event)} type="text" name="title" placeholder="First Name" />
+            <input onChange={(event) => this.handleStateChange(event)} value={this.state.title} type="text" name="title" placeholder="First Name" />
           </div>
           <div className="field">
             <label>Description</label>
-            <textarea onChange={(event) => this.handleStateChange(event)} type="text" name="description" placeholder="First Name" />
+            <textarea onChange={(event) => this.handleStateChange(event)} value={this.state.description} type="text" name="description" placeholder="First Name" />
           </div>
           <div>
             <DatePicker showTime onChange={this.handleDueDate} />

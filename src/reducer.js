@@ -91,8 +91,13 @@ function reducer(prevState=defaultState, action){
       choreView: false,
       editChoreView: false}
     case "USER_PAGE":
-      return {...prevState, userPage: !prevState.userPage,
-        roommateState: null}
+      return {...prevState, userPage: true,
+        signupForm: false,
+        roommateState: null,
+        calendar: false,
+        choreView: false,
+        editChoreView: false
+      }
     case "ROOMMATE_PAGE":
         return {...prevState, roommateState: action.payload, userPage: false, addFormPage: false, signupForm: false}
     case "UPDATE_USER_CHORES":

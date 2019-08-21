@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { postUser, login } from '../actions'
+import { postUser, login, home } from '../actions'
 
 
 class SignupForm extends React.Component{
@@ -36,18 +36,23 @@ class SignupForm extends React.Component{
     console.log("current user", this.props.user)
     return(
       <div>
-        <form className="ui equal width form">
+        <form className="ui form signup">
+            <h1 id="signup-title">Sign up!</h1>
           <div className="fields">
-            <div className="field">
+
+            <div id="signup-name" className="field input focus">
               <label>Username</label>
                 <input onChange={(event) => this.newUser(event)} name="newUsername" value={this.state.newUsername} type="text" placeholder="Username"></input>
             </div>
-            <div className="field">
+            <div id="signup-pass" className="field input focus">
               <label>Password</label>
                 <input onChange={(event) => this.newUser(event)} name="newPassword" value={this.state.newPassword} type="password"></input>
             </div>
-            </div>
-          <div onClick={(event) => this.postUser(event)} className="ui submit button">Submit</div>
+          </div>
+
+          <div onClick={(event) => this.postUser(event)} id="signup-submit" className="ui submit button">Submit</div>
+          <div onClick={(event) => this.props.home(event)} id="back" className="ui submit button">Back</div>
+
         </form>
       </div>
     )
@@ -68,6 +73,9 @@ function mdp(dispatch){
     },
     login: (user) => {
       return dispatch(login(user))
+    },
+    home: () => {
+      return dispatch(home())
     }
   }
 }
