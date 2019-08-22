@@ -118,11 +118,11 @@ class UserContainer extends React.Component{
                 <div>
                   <textarea autofocus="true" onChange={this.handleChange}></textarea>
                   <div>
-                    <button className="ui button primary" onClick={(event) => this.submitDescription(event)}>Submit</button>
+                    <button id="edit" className="ui button" onClick={(event) => this.submitDescription(event)}>Submit</button>
                   </div>
                 </div>
                 :
-                <button onClick={this.editDescription}>Edit description</button>}
+                <button id="edit" className="ui button" onClick={this.editDescription}>Edit description</button>}
         </div>
           {this.noChores() ? <Empty /> : this.renderContainer()}
       </div>

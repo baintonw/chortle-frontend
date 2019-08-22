@@ -81,7 +81,7 @@ class Chore extends React.Component{
     if(this.state.clicked){
       return(
         <div className="extra content">
-        Description: {this.props.chore.description}
+          Pick me!
         <div>
          {this.props.chore.completed && this.props.userPage ? "Done!" : null}
         </div>
@@ -115,7 +115,7 @@ class Chore extends React.Component{
     )
     } else {
       return (
-        <div className="ui card">
+        <div className="ui card whole-chore">
           {this.renderColor()}
           <div className="ui image">
             <i className="thumbtack icon"></i>
@@ -123,7 +123,7 @@ class Chore extends React.Component{
           <div  onClick={this.displayClick} id="chore" className="content">
             <a className="header">{this.props.chore.title}</a>
           <div className="meta">
-            <span className="date">Due on: {moment(this.props.chore.duedate).format("dddd DD MMMM [at] h:mmA")}</span>
+            <span className="date">Due on: <div id="duedate">{moment(this.props.chore.duedate).format("dddd DD MMMM [at] h:mmA")}</div></span>
           </div>
         <div className="description">
           {this.props.chore.description}

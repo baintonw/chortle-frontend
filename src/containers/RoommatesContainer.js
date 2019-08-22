@@ -30,7 +30,8 @@ class RoommatesContainer extends React.Component{
       <div id="roommates">
       <div className="ui raised segment primary">
         <div className="ui one column grid">
-          <div className="column">
+          <div id="col" className="column">
+            <div id="my-roommates">My Roommates!</div>
             {this.renderRoommates()}
           </div>
         </div>

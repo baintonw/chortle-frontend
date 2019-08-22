@@ -14,7 +14,7 @@ class Roommate extends React.Component{
       <div>
        <div id="roommate" onClick={this.handleClick} className="ui card">
         <div className="content">
-        <div id="roommate-icon">Logo</div>
+        <div id="roommate-icon"></div>
           <div className="roomate-icon">
           <i class="user icon"></i>
           </div>

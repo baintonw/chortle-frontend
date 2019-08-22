@@ -50,9 +50,9 @@ class ChoreView extends React.Component{
 
   ownerRender = () => {
     if(this.state.chore.users && this.state.chore.users.length > 0){
-      return this.state.chore.users[0].username
+      return <div>Claimed by: <div id="chore-view-owner" >{this.state.chore.users[0].username}</div></div>
     } else {
-      return "Up for grabs!"
+      return <div>Pick me!</div>
     }
   }
 
@@ -107,10 +107,10 @@ class ChoreView extends React.Component{
     return(
       <div>
         <div className="ui raised very padded container segment">
-          <div className="w3-card">
+          <div className="w3-card chore-view">
             {this.renderColor()}
               <div className="content">
-                <div className="header">{this.state.chore.title}</div>
+                <div  className="header"><div id="chore-view-title">{this.state.chore.title}</div></div>
               </div>
               <div className="content">
                 <h4 className="ui sub header"></h4>

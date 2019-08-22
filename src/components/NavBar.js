@@ -9,7 +9,7 @@ class NavBar extends React.Component{
   render(){
     return(
       <div className="ui raised segment navbar primary">
-        <div className="left">
+        <div id="chortle" className="left">
           Chortle!
         </div>
         <div>
@@ -19,9 +19,9 @@ class NavBar extends React.Component{
 
                <div className="nav-btns">
                  <button onClick={() => this.props.addForm()} className="ui button add-btn">Add A Chore!</button>
-                 <button onClick={() => {this.props.showCalendar()}} className="ui button calendar-btn">The Docket</button>
+                 <button onClick={() => {this.props.showCalendar()}} className="ui button calendar-btn">The Calendar</button>
                </div>
-               <div className="apt-name">
+               <div id="apt-name">
                   Jerry's Apartment
                </div>
               <div className="right">

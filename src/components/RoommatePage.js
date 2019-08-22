@@ -30,7 +30,7 @@ class RoommatePage extends React.Component{
 
   renderContainer = () => {
     return(
-      <div className="ui raised segment user-chores primary">
+      <div  className="ui raised segment user-chores primary">
         <div className="ui three column grid" >
           {this.props.roommateState ? this.roommateChores() : null}
         </div>

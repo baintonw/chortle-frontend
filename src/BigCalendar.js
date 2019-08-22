@@ -37,6 +37,7 @@ class MyCalendar extends React.Component{
   convertChores = () => {
     const newEvents = this.props.chores.map(chore => {
       if(!chore.completed){
+
         return {
           start: new Date(moment(chore.duedate)),
           end: new Date(moment(chore.duedate).add(1, "hours")),
@@ -70,7 +71,7 @@ class MyCalendar extends React.Component{
             endAccessor="end"
           />
         </div>
-      
+
 
     )
   }
