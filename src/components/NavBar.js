@@ -9,9 +9,9 @@ class NavBar extends React.Component{
   render(){
     return(
       <div className="ui raised segment navbar primary">
-        <div id="chortle" className="left">
-          Chortle!
-        </div>
+        
+          <img id="logo" src={"/images/ChortleLogo.png"} />
+        
         <div>
           {this.props.user
              ?

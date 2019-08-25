@@ -14,9 +14,15 @@ code {
     monospace;
 }
 
-#chortle {
+/* #chortle {
   font-family: "Georgia";
   font-size: 40px;
+} */
+
+#logo {
+  -webkit-filter: brightness 100%;
+  margin: -14px;
+  height: 100px;
 }
 
 
@@ -188,11 +194,13 @@ code {
 }
 
 #apt-name {
-  bottom: 0%;
-  margin-top: 10px;
-  margin-left: 45%;
+  /* bottom: 0%; */
+  /* margin-top: 0px; */
+  margin-top: -40px;
+  margin-left: 40%;
   font-family: "Georgia";
   font-size: 40px;
+  padding-bottom: 40px;
 }
 
 .chore {
