@@ -125,12 +125,6 @@ code {
   border: 1px solid black !important;
 }
 
-/* .tile {
-  border: 2px solid purple;
-  padding-top: 16px;
-  margin: 16px;
-
-} */
 #home{
   position: absolute;
   bottom: -15px;
@@ -169,8 +163,8 @@ code {
 
   overflow: auto;
   top: 3px;
-  left: -380px;
-  width: 130%;
+  left: -18%;
+  width: 105%;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -244,6 +238,7 @@ code {
 .signup {
   top: 5px;
 }
+
 #signup-title {
   position:relative;
   left: 17px;
@@ -325,9 +320,6 @@ code {
 
 .userpage {
   padding-top: 10px;
-
-
-
 
 }
 
@@ -451,6 +443,7 @@ code {
 }
 
 .primary {
+  /* border: solid 3px red; */
   background-color: #DAE2E4 !important;
 }
 
