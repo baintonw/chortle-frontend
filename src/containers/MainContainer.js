@@ -71,9 +71,7 @@ mainRender = () => {
     return(
       <div>
         <div className="ui container">
-          <div>
             {this.mainRender()}
-          </div>
         </div>
         <div className="ui raised segment footer primary">
           <Footer />
