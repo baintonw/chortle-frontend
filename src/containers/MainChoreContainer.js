@@ -8,8 +8,8 @@ class MainChoreContainer extends React.Component{
 
   renderContainer = () => {
     return(
-      <div className="ui raised segment chores primary">
-        <h1>Available Chores!</h1>
+      <div className="ui segment raised chores primary">
+          <h1>Available Chores!</h1>
         <div className="available">
           <div className="ui three column grid">
               {this.noChores() ? <Empty /> : this.renderChores()}

@@ -60,13 +60,14 @@ code {
 
 .login-btn {
   position: absolute;
-  left: 45.7%;
+  left: 44.9%;
 }
 
 .signup-btn {
   position: absolute;
   left:50%;
 }
+
 .big {
   height: 100%;
 }
@@ -93,6 +94,8 @@ code {
 
 
 .chore-view {
+  opacity: 0;
+
   top: 5px;
   margin: 5px;
   padding: 5px;
@@ -159,19 +162,20 @@ code {
 
 
 .chores {
-  position: absolute;
-
+  position: relative;
+  /* opacity: 0; */
   overflow: auto;
   top: 3px;
-  left: -18%;
-  width: 105%;
+  left: 2vw;
+  height: 70vh;
+
+  width: 70%;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   border: 4px solid grey;
   box-shadow: 0 0 08px black;
-  height: 700px;
 
 }
 
@@ -346,8 +350,11 @@ code {
   text-align:left;
 }
 .user-chores {
-  position:absolute;
-  height: 600px;
+  position: absolute;
+  display: block;
+  /* bottom: 45px; */
+
+  overflow: auto;
 
 }
 
@@ -437,6 +444,7 @@ code {
 .footer {
   position: fixed !important;
   width: 100vw !important;
+  display: block;
   bottom: 0px;
   left: 0;
 

@@ -69,10 +69,8 @@ mainRender = () => {
   render(){
     console.log("This is the old chore view action", this.props.showChoreView)
     return(
-      <div>
-        <div className="ui container">
+      <div >
             {this.mainRender()}
-        </div>
         <div className="ui raised segment footer primary">
           <Footer />
         </div>

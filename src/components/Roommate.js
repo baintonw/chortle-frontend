@@ -9,6 +9,7 @@ class Roommate extends React.Component{
   handleClick = (event) => {
     this.props.roommatePage(this.props.roommate)
   }
+
   render(){
     return(
       <div>

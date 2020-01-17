@@ -47,7 +47,7 @@ class RoommatePage extends React.Component{
             <div className="star">{this.completed()}<i class="star outline icon"></i></div>
           <h3>About:</h3>
             <p>{this.props.roommateState.description}</p>
-      </div>
+        </div>
           {this.noChores() ? <Empty /> : this.renderContainer()}
     </div>
     )

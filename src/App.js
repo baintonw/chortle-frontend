@@ -3,6 +3,10 @@ import React from 'react';
 
 import './App.css';
 
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+// import HTML5Backend from 'react-dnd-html5-backend'
+// import { DndProvider } from 'react-dnd';
+
 // import MyCalendar from './BigCalendar'
 
 
@@ -30,6 +34,7 @@ class App extends React.Component {
   }
 
   renderHome = () => {
+
     if(this.props.user){
       return <MainContainer />
     } else if(this.props.signupForm){
@@ -43,18 +48,19 @@ class App extends React.Component {
 
   render(){
     return(
-      <div>
-      <div className="app">
-        <NavBar />
+      // <DndProvider backend={HTML5Backend}>
         <div>
-          {this.renderHome()}
+          <DragDropContext onDragEnd={result => console.log(result)}>
+          <div className="app">
+            <NavBar />
+            <div>
+              {this.renderHome()}
+            </div>
+          </div>
+          </DragDropContext>
         </div>
-      </div>
-      </div>
-
+      // </DndProvider>
     )
-
-
   }
 
 }//end of app component
@@ -88,5 +94,5 @@ function mapDispatchToProps(dispatch){
 }
 
 // {this.props.user ? <MainContainer /> : <Login />}
-
+// export { DnDProvider } = DndProvider(HTML5Backend)(App);
 export default connect(mapStateToProps, mapDispatchToProps)(App);

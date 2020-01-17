@@ -29,7 +29,6 @@ class UserContainer extends React.Component{
   }
 
   submitDescription = (event) => {
-    console.log("description in state", this.state.description)
     fetch(`http://localhost:3000/users/${this.props.user.id}/edit`,{
               method: "PATCH",
               headers: {
@@ -95,17 +94,18 @@ class UserContainer extends React.Component{
       return true
     }
   }
+
   renderContainer = () => {
     return(
-      <div className="ui raised segment user-chores primary">
+      <div className="ui raised segment primary user-chores">
         <div className="ui three column grid" >
           {this.state.user ? this.renderUserChores() : null}
         </div>
       </div>
     )
   }
-  render(){
 
+  render(){
     return(
     <div className="userpage">
         <div className="ui raised segment about-me primary">
