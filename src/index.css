@@ -60,12 +60,12 @@ code {
 
 .login-btn {
   position: absolute;
-  left: 44.9%;
+  left: 44.0%;
 }
 
 .signup-btn {
   position: absolute;
-  left:50%;
+  left:50.5%;
 }
 
 .big {
@@ -371,6 +371,7 @@ code {
 }
 .add-form {
   top: 10px;
+  margin: 100px 350px;
 }
 #username {
   color:black;
