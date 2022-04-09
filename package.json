@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.21.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^12.2.0",
     "react-big-calendar": "^0.22.0",
